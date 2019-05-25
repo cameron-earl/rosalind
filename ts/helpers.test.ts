@@ -1,22 +1,34 @@
-import { fastaToObj, rnaToProtein, motifLocations } from './helpers';
+import {
+	rnaToProtein,
+	motifLocations,
+	dnaToRna,
+	dnaToProtein,
+	rnaToDna,
+	reverseComplement,
+} from './helpers';
 
-describe('fastaToObj', () => {
-	it('should correctly parse simple input', () => {
-		const input = `>Rosalind_6404
-CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCC
-TCCCACTAATAATTCTGAGG
->Rosalind_5959
-CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCT
-ATATCCATTTGTCAGCAGACACGC
->Rosalind_0808
-CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGAC
-TGGGAACCTGCGGGCAGTAGGTGGAAT`;
-		const actual = fastaToObj(input);
-		const keyValArr = Object.entries(actual);
-		expect(keyValArr.length).toEqual(3);
-		expect(actual['Rosalind_5959']).toEqual(
-			'CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC',
-		);
+describe('dnaToRna', () => {
+	it('should return "ACGU" given "ACGT"', () => {
+		expect(dnaToRna('ACGT')).toEqual('ACGU');
+	});
+});
+describe('rnaToDna', () => {
+	it('should return "ACGT" given "ACGU"', () => {
+		expect(rnaToDna('ACGU')).toEqual('ACGT');
+	});
+});
+
+describe('reverseComplement', () => {
+	it('should return "ACCGGGTTTT" given "AAAACCCGGT"', () => {
+		expect(reverseComplement('AAAACCCGGT')).toEqual('ACCGGGTTTT');
+	});
+});
+
+describe('dnaToProtein', () => {
+	it('should return "MISCHIEF" given matching dna', () => {
+		const input = 'ATGATTTCTTGCCATATTGAATTC';
+		const expected = 'MISCHIEF';
+		expect(dnaToProtein(input)).toEqual(expected);
 	});
 });
 

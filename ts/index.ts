@@ -1,7 +1,18 @@
 import fs from 'fs';
 import { solutions } from './solutions';
 
-export const getData = (name: string): string | void => {
+// Functions involved in running the project
+
+const main = (fnName: string): void => {
+	const fnNames = Object.keys(solutions);
+	// if a valid function name is provided in cli command arg, run it
+	// otherwise, run the last function listed
+	const fnToRun = solutions[fnName] ? fnName : fnNames[fnNames.length - 1];
+	log.info('Running %s:', fnToRun);
+	runFn(fnToRun);
+};
+
+const getData = (name: string): string | void => {
 	try {
 		return fs.readFileSync(`./datasets/rosalind_${name}.txt`, 'utf8');
 	} catch (e) {
@@ -14,7 +25,7 @@ export const getData = (name: string): string | void => {
 	}
 };
 
-export const runFn = (fnName: string): void => {
+const runFn = (fnName: string): void => {
 	const data = getData(fnName);
 	if (!data) return;
 	const solution = solutions[fnName](data);
@@ -22,10 +33,8 @@ export const runFn = (fnName: string): void => {
 	pbcopy(solution);
 };
 
-export type solutionFn = (data: string) => string;
-
 const pbcopy = (data: string) => {
-	var proc = require('child_process').spawn('pbcopy');
+	const proc = require('child_process').spawn('pbcopy');
 	proc.stdin.write(data);
 	proc.stdin.end();
 	log.info('Output copied to clipboard.');
@@ -70,8 +79,10 @@ const logFn = (
 const colorString = (str: string, color: ConsoleCommand) =>
 	ConsoleCommand.Bright + color + str + ConsoleCommand.Reset;
 
-export const log = {
+const log = {
 	error: logFn(ConsoleCommand.FgRed, ConsoleCommand.FgYellow),
 	warn: logFn(ConsoleCommand.FgYellow, ConsoleCommand.FgCyan),
 	info: logFn(ConsoleCommand.FgGreen, ConsoleCommand.FgYellow),
 };
+
+main(process.argv[2]);

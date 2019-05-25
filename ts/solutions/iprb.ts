@@ -1,5 +1,4 @@
-import { log } from '../utilities';
-import { parseNumberArray } from '../helpers';
+import { parseNumberArray } from '../parsing';
 
 export default (data: string): string => {
 	const [AANum, AaNum, aaNum] = parseNumberArray(data);

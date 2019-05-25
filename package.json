@@ -4,9 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "npm run build && node .",
+		"start": "npm run build && node ./js",
 		"test": "npm run build && jasmine",
-		"build": "rm -rf ./js && tsc"
+		"build": "rm -rf ./js && tsc -t \"ESNEXT\" --pretty"
 	},
 	"author": "",
 	"license": "ISC",

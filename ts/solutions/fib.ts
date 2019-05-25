@@ -1,4 +1,4 @@
-import { parseNumberArray } from '../helpers';
+import { parseNumberArray } from '../parsing';
 
 export default (data: string): string => {
 	const [n, k] = parseNumberArray(data);

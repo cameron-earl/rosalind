@@ -1,3 +1,5 @@
+// Functions, enums, and maps useful for solving multiple problems
+
 export enum DnaBase {
 	A = 'A',
 	C = 'C',
@@ -45,33 +47,6 @@ export const reverseComplements: { [key in DnaBase]: DnaBase } = {
 	[d.G]: d.C,
 	[d.T]: d.A,
 };
-
-export const dnaToRna = (dna: string): string => dna.replace(/T/g, 'U');
-
-export const rnaToDna = (rna: string): string => rna.replace(/U/g, 'T');
-
-export const reverseComplement = (dna: string): string =>
-	dna
-		.split('')
-		.map(base => reverseComplements[base as DnaBase])
-		.reverse()
-		.join('');
-
-export const fastaToObj = (data: string): { [key: string]: string } => {
-	const keyVals = data
-		.trim()
-		.slice(1)
-		.split('>');
-	const obj: { [key: string]: string } = {};
-	for (const keyVal of keyVals) {
-		const [key, ...data] = keyVal.split('\n');
-		obj[key] = data.join('');
-	}
-	return obj;
-};
-
-export const fastaToArray = (data: string): string[] =>
-	Object.values(fastaToObj(data));
 
 export const rnaCodonProteinMap: { [key: string]: AminoAcid } = {
 	AAA: aa.K,
@@ -140,6 +115,17 @@ export const rnaCodonProteinMap: { [key: string]: AminoAcid } = {
 	UUU: aa.F,
 };
 
+export const dnaToRna = (dna: string): string => dna.replace(/T/g, 'U');
+
+export const rnaToDna = (rna: string): string => rna.replace(/U/g, 'T');
+
+export const reverseComplement = (dna: string): string =>
+	dna
+		.split('')
+		.map(base => reverseComplements[base as DnaBase])
+		.reverse()
+		.join('');
+
 export const rnaToProtein = (rna: string): string =>
 	(rna.match(/[\s\S]{1,3}/g) || [])
 		.map(codon => rnaCodonProteinMap[codon])
@@ -158,6 +144,3 @@ export const motifLocations = (na: string, motif: string): number[] => {
 	}
 	return oneBasedIndices;
 };
-
-export const parseNumberArray = (data: string): number[] =>
-	data.split(' ').map(Number);

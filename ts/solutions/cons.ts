@@ -1,4 +1,5 @@
-import { fastaToObj, DnaBase, fastaToArray } from '../helpers';
+import { DnaBase } from '../helpers';
+import { fastaToArray } from '../parsing';
 
 const { A, C, G, T } = DnaBase;
 

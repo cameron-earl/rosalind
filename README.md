@@ -1,6 +1,6 @@
 ## Solutions for the problems found at [http://rosalind.info](http://rosalind.info)
 
-Rosalind.info has a repository of bioinformatics problems arranged in increasing complexity. If you don't want it spoiled for you, avoid looking at the
+Rosalind.info has a repository of bioinformatics problems arranged in increasing complexity. If you don't want it spoiled for you, maybe don't look in here.
 
 ## How to Run:
 

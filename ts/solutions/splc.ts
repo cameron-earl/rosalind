@@ -1,4 +1,5 @@
-import { dnaToProtein, fastaToArray } from '../helpers';
+import { dnaToProtein } from '../helpers';
+import { fastaToArray } from '../parsing';
 
 export default (data: string) => {
 	let [dna, ...introns] = fastaToArray(data);

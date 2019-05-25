@@ -1,4 +1,4 @@
-import { fastaToObj } from '../helpers';
+import { fastaToObj } from '../parsing';
 
 export default (data: string): string => {
 	const dataObj = fastaToObj(data);

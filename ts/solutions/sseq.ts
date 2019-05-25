@@ -1,4 +1,4 @@
-import { fastaToArray } from '../helpers';
+import { fastaToArray } from '../parsing';
 
 export default (data: string): string => {
 	let [dna, subSeq] = fastaToArray(data);

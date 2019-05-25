@@ -9,17 +9,9 @@ import perm from './perm';
 import splc from './splc';
 import sseq from './sseq';
 import subs from './subs';
-import { runFn, solutionFn, log } from '../utilities';
 import iev from './iev';
 
-const main = (fnName: string): void => {
-	const fnNames = Object.keys(solutions);
-	// if a valid function name is provided in cli command arg, run it
-	// otherwise, run the last function listed
-	const fnToRun = solutions[fnName] ? fnName : fnNames[fnNames.length - 1];
-	log.info('Running %s:', fnToRun);
-	runFn(fnToRun);
-};
+export type solutionFn = (data: string) => string;
 
 export const solutions: { [key: string]: solutionFn } = {
 	dna,
@@ -46,5 +38,3 @@ export const solutions: { [key: string]: solutionFn } = {
 	// revp
 	sseq,
 };
-
-export default main;
