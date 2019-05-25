@@ -5,7 +5,7 @@ export default (data: string): string => {
 	const percentObj: { [key: string]: string } = {};
 	let maxKey = '';
 	let maxPercent = 0;
-	for (const key in dataObj) {
+	for (const key of Object.keys(dataObj)) {
 		const dna = dataObj[key];
 		const gcCount = dna
 			.split('')

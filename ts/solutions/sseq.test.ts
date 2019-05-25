@@ -12,7 +12,7 @@ describe('sseq', () => {
 	});
 
 	it('should handle consecutive duplicate letters', () => {
-		const input = `Rosalind_14\nGATTAGA\n>Rosalind_15\nGGA`;
+		const input = 'Rosalind_14\nGATTAGA\n>Rosalind_15\nGGA';
 		const expected = '1 6 7';
 		expect(sseq(input)).toEqual(expected);
 	});

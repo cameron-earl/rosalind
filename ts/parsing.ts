@@ -8,8 +8,8 @@ export const fastaToObj = (data: string): { [key: string]: string } => {
 		.split('>');
 	const obj: { [key: string]: string } = {};
 	for (const keyVal of keyVals) {
-		const [key, ...data] = keyVal.split('\n');
-		obj[key] = data.join('');
+		const [key, ...naArr]: string[] = keyVal.split('\n');
+		obj[key] = naArr.join('');
 	}
 	return obj;
 };

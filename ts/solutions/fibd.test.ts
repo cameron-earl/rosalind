@@ -1,4 +1,4 @@
-import fibd, { sumBigIntArr, allButFirst, allButLast } from './fibd';
+import fibd, { allButFirst, allButLast, sumBigIntArr } from './fibd';
 
 describe('fibd', () => {
 	it('should pass sample test', () => {

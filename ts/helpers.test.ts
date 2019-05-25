@@ -1,10 +1,10 @@
 import {
-	rnaToProtein,
-	motifLocations,
-	dnaToRna,
 	dnaToProtein,
-	rnaToDna,
+	dnaToRna,
+	motifLocations,
 	reverseComplement,
+	rnaToDna,
+	rnaToProtein,
 } from './helpers';
 
 describe('dnaToRna', () => {

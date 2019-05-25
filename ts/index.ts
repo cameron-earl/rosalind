@@ -27,13 +27,15 @@ const getData = (name: string): string | void => {
 
 const runFn = (fnName: string): void => {
 	const data = getData(fnName);
-	if (!data) return;
+	if (!data) {
+		return;
+	}
 	const solution = solutions[fnName](data);
 	console.log(solution);
 	pbcopy(solution);
 };
 
-const pbcopy = (data: string) => {
+const pbcopy = (data: string): void => {
 	const proc = require('child_process').spawn('pbcopy');
 	proc.stdin.write(data);
 	proc.stdin.end();
@@ -69,20 +71,23 @@ enum ConsoleCommand {
 const logFn = (
 	mainColor: ConsoleCommand,
 	highlightColor: ConsoleCommand,
-): Function => (msg: string, highlight: string = ''): void => {
+): ((msg: string, hightlight?: string) => void) => (
+	msg: string,
+	highlight: string = '',
+): void => {
 	console.log(
 		colorString(msg, mainColor),
 		colorString(highlight, highlightColor) + mainColor,
 	);
 };
 
-const colorString = (str: string, color: ConsoleCommand) =>
+const colorString = (str: string, color: ConsoleCommand): string =>
 	ConsoleCommand.Bright + color + str + ConsoleCommand.Reset;
 
 const log = {
 	error: logFn(ConsoleCommand.FgRed, ConsoleCommand.FgYellow),
-	warn: logFn(ConsoleCommand.FgYellow, ConsoleCommand.FgCyan),
 	info: logFn(ConsoleCommand.FgGreen, ConsoleCommand.FgYellow),
+	warn: logFn(ConsoleCommand.FgYellow, ConsoleCommand.FgCyan),
 };
 
 main(process.argv[2]);

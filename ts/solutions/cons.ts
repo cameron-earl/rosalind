@@ -1,7 +1,7 @@
 import { DnaBase } from '../helpers';
 import { fastaToArray } from '../parsing';
 
-const { A, C, G, T } = DnaBase;
+const { A, C, G, T }: { [key in DnaBase]: DnaBase } = DnaBase;
 
 export default (data: string): string => {
 	const dnaArr = fastaToArray(data);
@@ -24,7 +24,7 @@ export default (data: string): string => {
 		}
 		let maxCount = 0;
 		let mostCommonBase: DnaBase = A;
-		for (const base in baseCounts) {
+		for (const base of Object.keys(baseCounts)) {
 			const b = base as DnaBase;
 			freqCounts[b].push(baseCounts[b]);
 			if (maxCount < baseCounts[b]) {
@@ -35,7 +35,7 @@ export default (data: string): string => {
 		consensusStr += DnaBase[mostCommonBase];
 	}
 	const freqTable = Object.entries(freqCounts)
-		.map(entry => `${entry[0]}: ${entry[1].join(' ')}`)
+		.map((entry: [string, number[]]) => `${entry[0]}: ${entry[1].join(' ')}`)
 		.join('\n');
 	return `${consensusStr}\n${freqTable}`;
 };

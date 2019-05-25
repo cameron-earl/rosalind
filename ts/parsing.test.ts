@@ -1,4 +1,4 @@
-import { fastaToObj, parseNumberArray, fastaToArray } from './parsing';
+import { fastaToArray, fastaToObj, parseNumberArray } from './parsing';
 
 describe('parseNumberArray', () => {
 	it('should correctly parse simple input', () => {
@@ -10,12 +10,12 @@ describe('parseNumberArray', () => {
 
 describe('fasta functions', () => {
 	const fastaObj = {
-		Rosalind_6404:
-			'CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG',
-		Rosalind_5959:
-			'CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC',
 		Rosalind_0808:
 			'CCACCCTCGTGGTATGGCTAGGCATTCAGGAACCGGAGAACGCTTCAGACCAGCCCGGACTGGGAACCTGCGGGCAGTAGGTGGAAT',
+		Rosalind_5959:
+			'CCATCGGTAGCGCATCCTTAGTCCAATTAAGTCCCTATCCAGGCGCTCCGCCGAAGGTCTATATCCATTTGTCAGCAGACACGC',
+		Rosalind_6404:
+			'CCTGCGGAAGATCGGCACTAGAATAGCCAGAACCGTTTCTCTGAGGCTTCCGGCCTTCCCTCCCACTAATAATTCTGAGG',
 	};
 
 	const entries = Object.entries(fastaObj);

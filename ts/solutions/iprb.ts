@@ -1,7 +1,7 @@
 import { parseNumberArray } from '../parsing';
 
 export default (data: string): string => {
-	const [AANum, AaNum, aaNum] = parseNumberArray(data);
+	const [AANum, AaNum, aaNum]: number[] = parseNumberArray(data);
 	const totalPop = AANum + AaNum + aaNum;
 	const popCounts: { [key: string]: number } = {
 		AA: AANum,
@@ -11,11 +11,13 @@ export default (data: string): string => {
 	const chanceRecessive: { [key: string]: number } = { AA: 0, Aa: 0.5, aa: 1 };
 	const percentages: number[] = [];
 
-	for (const first in popCounts) {
+	for (const first of Object.keys(popCounts)) {
 		const firstProb = popCounts[first] / totalPop;
-		for (const second in popCounts) {
+		for (const second of Object.keys(popCounts)) {
 			let thisCount = popCounts[second];
-			if (first === second) thisCount--;
+			if (first === second) {
+				thisCount--;
+			}
 			const secondProb = firstProb * (thisCount / (totalPop - 1));
 			const recessiveChance = chanceRecessive[first] * chanceRecessive[second];
 			const dominantChance = 1 - recessiveChance;
@@ -23,5 +25,5 @@ export default (data: string): string => {
 		}
 	}
 
-	return percentages.reduce((a, b) => a + b).toFixed(5);
+	return percentages.reduce((a: number, b: number) => a + b).toFixed(5);
 };

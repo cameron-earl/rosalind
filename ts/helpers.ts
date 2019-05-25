@@ -81,30 +81,30 @@ export const rnaCodonProteinMap: { [key: string]: AminoAcid } = {
 	CUC: aa.L,
 	CUG: aa.L,
 	CUU: aa.L,
-	GUU: aa.V,
-	GUC: aa.V,
-	GUA: aa.V,
-	GUG: aa.V,
-	GCU: aa.A,
-	GCC: aa.A,
-	GCA: aa.A,
-	GCG: aa.A,
-	GAU: aa.D,
-	GAC: aa.D,
 	GAA: aa.E,
+	GAC: aa.D,
 	GAG: aa.E,
+	GAU: aa.D,
+	GCA: aa.A,
+	GCC: aa.A,
+	GCG: aa.A,
+	GCU: aa.A,
 	GGA: aa.G,
 	GGC: aa.G,
 	GGG: aa.G,
 	GGU: aa.G,
+	GUA: aa.V,
+	GUC: aa.V,
+	GUG: aa.V,
+	GUU: aa.V,
 	UAA: aa.Stop,
 	UAC: aa.Y,
-	UCA: aa.S,
-	UAU: aa.Y,
-	UCU: aa.S,
 	UAG: aa.Stop,
+	UAU: aa.Y,
+	UCA: aa.S,
 	UCC: aa.S,
 	UCG: aa.S,
+	UCU: aa.S,
 	UGA: aa.Stop,
 	UGC: aa.C,
 	UGG: aa.W,
@@ -122,13 +122,13 @@ export const rnaToDna = (rna: string): string => rna.replace(/U/g, 'T');
 export const reverseComplement = (dna: string): string =>
 	dna
 		.split('')
-		.map(base => reverseComplements[base as DnaBase])
+		.map((base: string) => reverseComplements[base as DnaBase])
 		.reverse()
 		.join('');
 
 export const rnaToProtein = (rna: string): string =>
 	(rna.match(/[\s\S]{1,3}/g) || [])
-		.map(codon => rnaCodonProteinMap[codon])
+		.map((codon: string) => rnaCodonProteinMap[codon])
 		.join('');
 
 export const dnaToProtein = (dna: string): string =>

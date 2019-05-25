@@ -1,7 +1,7 @@
 import { parseNumberArray } from '../parsing';
 
 export default (data: string): string => {
-	const [end, lifespan] = parseNumberArray(data);
+	const [end, lifespan]: number[] = parseNumberArray(data);
 
 	let pops: bigint[] = new Array(lifespan).fill(0n);
 	pops[0] = 1n;
@@ -13,7 +13,7 @@ export default (data: string): string => {
 };
 
 export const sumBigIntArr = (arr: bigint[]): bigint =>
-	arr.reduce((a, b) => a + b, 0n);
+	arr.reduce((a: bigint, b: bigint) => a + b, 0n);
 
 export const allButFirst = <T>(arr: T[]): T[] => arr.slice(1);
 

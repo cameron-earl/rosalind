@@ -1,16 +1,19 @@
+/* tslint:disable:object-literal-sort-keys */
+
 import { dnaToRna, reverseComplement, rnaToProtein } from '../helpers';
 import cons from './cons';
 import dna from './dna';
 import fib from './fib';
+import fibd from './fibd';
 import gc from './gc';
+import grph from './grph';
 import hamm from './hamm';
+import iev from './iev';
 import iprb from './iprb';
 import perm from './perm';
 import splc from './splc';
 import sseq from './sseq';
 import subs from './subs';
-import iev from './iev';
-import fibd from './fibd';
 
 export type solutionFn = (data: string) => string;
 
@@ -29,7 +32,7 @@ export const solutions: { [key: string]: solutionFn } = {
 	// mrna,
 	// lia,
 	// prtm,
-	// grph,
+	grph,
 	// mprt,
 	cons,
 	// orf,

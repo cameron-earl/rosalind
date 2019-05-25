@@ -1,14 +1,16 @@
 export default (data: string): string => {
 	const n = +data;
-	const arr = new Array(n).fill(0).map((e, i: number) => i + 1);
+	const arr = new Array(n).fill(0).map((e: number, i: number) => i + 1);
 	const permutations = getAllPermutations(arr);
 	return `${permutations.length}\n${permutations
-		.map(a => a.join(' '))
+		.map((a: number[]) => a.join(' '))
 		.join('\n')}`;
 };
 
 export const getAllPermutations = (arr: number[]): number[][] => {
-	if (arr.length <= 1) return [arr];
+	if (arr.length <= 1) {
+		return [arr];
+	}
 
 	let permutations: number[][] = [];
 
