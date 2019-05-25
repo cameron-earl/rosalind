@@ -10,6 +10,7 @@ import splc from './splc';
 import sseq from './sseq';
 import subs from './subs';
 import iev from './iev';
+import fibd from './fibd';
 
 export type solutionFn = (data: string) => string;
 
@@ -24,7 +25,7 @@ export const solutions: { [key: string]: solutionFn } = {
 	subs,
 	hamm,
 	iev,
-	// fibd,
+	fibd,
 	// mrna,
 	// lia,
 	// prtm,
