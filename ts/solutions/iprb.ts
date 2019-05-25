@@ -1,7 +1,8 @@
 import { log } from '../utilities';
+import { parseNumberArray } from '../helpers';
 
 export default (data: string): string => {
-	const [AANum, AaNum, aaNum] = data.split(' ').map(Number);
+	const [AANum, AaNum, aaNum] = parseNumberArray(data);
 	const totalPop = AANum + AaNum + aaNum;
 	const popCounts: { [key: string]: number } = {
 		AA: AANum,

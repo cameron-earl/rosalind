@@ -10,6 +10,7 @@ import splc from './splc';
 import sseq from './sseq';
 import subs from './subs';
 import { runFn, solutionFn, log } from '../utilities';
+import iev from './iev';
 
 const main = (fnName: string): void => {
 	const fnNames = Object.keys(solutions);
@@ -30,7 +31,7 @@ export const solutions: { [key: string]: solutionFn } = {
 	prot: rnaToProtein,
 	subs,
 	hamm,
-	// iev,
+	iev,
 	// fibd,
 	// mrna,
 	// lia,

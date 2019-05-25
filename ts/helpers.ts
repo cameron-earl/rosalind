@@ -158,3 +158,6 @@ export const motifLocations = (na: string, motif: string): number[] => {
 	}
 	return oneBasedIndices;
 };
+
+export const parseNumberArray = (data: string): number[] =>
+	data.split(' ').map(Number);

@@ -1,5 +1,7 @@
+import { parseNumberArray } from '../helpers';
+
 export default (data: string): string => {
-	const [n, k] = data.split(' ').map(Number);
+	const [n, k] = parseNumberArray(data);
 	const seq = [1, 1];
 	for (let i = 0; i < n - 2; i++) {
 		seq.push(seq[i] * k + seq[i + 1]);
