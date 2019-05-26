@@ -10,9 +10,7 @@
 			"parameter",
 			"arrow-parameter",
 			"property-declaration",
-			"member-variable-declaration",
-			"object-destructuring",
-			"array-destructuring"
+			"member-variable-declaration"
 		],
 		"indent": false,
 		"no-console": false,

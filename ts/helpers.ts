@@ -144,3 +144,8 @@ export const motifLocations = (na: string, motif: string): number[] => {
 	}
 	return oneBasedIndices;
 };
+
+export const codonsForAminoAcid = (given: AminoAcid): string[] =>
+	Object.keys(rnaCodonProteinMap).filter(
+		(codon: string) => given === rnaCodonProteinMap[codon],
+	);

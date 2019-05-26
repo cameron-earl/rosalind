@@ -1,4 +1,6 @@
 import {
+	AminoAcid,
+	codonsForAminoAcid,
 	dnaToProtein,
 	dnaToRna,
 	motifLocations,
@@ -56,5 +58,13 @@ describe('motifLocations', () => {
 		const actual = motifLocations(na, motif);
 
 		expect(actual).toEqual(expected);
+	});
+});
+
+describe('codonsForAminoAcid', () => {
+	it('should return stop codons', () => {
+		const { Stop } = AminoAcid;
+		const stopCodons: string[] = ['UAA', 'UAG', 'UGA'];
+		expect(codonsForAminoAcid(Stop)).toEqual(stopCodons);
 	});
 });
