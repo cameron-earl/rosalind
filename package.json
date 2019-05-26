@@ -7,6 +7,7 @@
 	"scripts": {
 		"build": "rm -rf ./js && tsc --pretty",
 		"lint": "tslint -c tslint.json './ts/*' --fix",
+		"open": "f(){ open http://rosalind.info/problems/$1/ ;};f",
 		"start": "npm run build && node ./js",
 		"test": "npm run lint && npm run build && jasmine"
 	},

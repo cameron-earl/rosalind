@@ -10,6 +10,7 @@ import grph from './grph';
 import hamm from './hamm';
 import iev from './iev';
 import iprb from './iprb';
+import lcsq from './lcsq';
 import mrna from './mrna';
 import perm from './perm';
 import splc from './splc';
@@ -42,4 +43,5 @@ export const solutions: { [key: string]: solutionFn } = {
 	perm,
 	// revp
 	sseq,
+	lcsq,
 };
