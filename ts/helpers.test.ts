@@ -3,6 +3,8 @@ import {
 	codonsForAminoAcid,
 	dnaToProtein,
 	dnaToRna,
+	findSplitSubseq,
+	hammingDistance,
 	motifLocations,
 	reverseComplement,
 	rnaToDna,
@@ -66,5 +68,43 @@ describe('codonsForAminoAcid', () => {
 		const { Stop } = AminoAcid;
 		const stopCodons: string[] = ['UAA', 'UAG', 'UGA'];
 		expect(codonsForAminoAcid(Stop)).toEqual(stopCodons);
+	});
+});
+
+describe('findSplitSubseq', () => {
+	it('should return address of simple subsequence', () => {
+		const na = 'AGCTCAGT';
+		const subseq = 'ATAT';
+
+		expect(findSplitSubseq(na, subseq)).toEqual([0, 3, 5, 7]);
+	});
+
+	it('should return empty array when subsequence not found', () => {
+		const na = 'TTGGGGGG';
+		const subseq = 'TTT';
+
+		expect(findSplitSubseq(na, subseq)).toEqual([]);
+	});
+});
+
+describe('hammingDistance', () => {
+	it('should return -1 given strings with different lengths', () => {
+		expect(hammingDistance('GATTACA', 'CAT')).toEqual(-1);
+	});
+
+	it('should return 0 given empty strings', () => {
+		expect(hammingDistance('', '')).toEqual(0);
+	});
+
+	it('should return 0 given identical strings', () => {
+		expect(hammingDistance('CAT', 'CAT')).toEqual(0);
+	});
+
+	it('should return 1 given nearly identical strings', () => {
+		expect(hammingDistance('CAT', 'GAT')).toEqual(1);
+	});
+
+	it('should return 2 given strings with hamming distance 2', () => {
+		expect(hammingDistance('CAT', 'GAC')).toEqual(2);
 	});
 });

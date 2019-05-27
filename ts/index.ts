@@ -30,9 +30,12 @@ const runFn = (fnName: string): void => {
 	if (!data) {
 		return;
 	}
+	const hrstart = process.hrtime();
 	const solution = solutions[fnName](data);
+	const hrend = process.hrtime(hrstart);
 	console.log(solution);
 	pbcopy(solution);
+	console.info('Execution time: %ds %dms', hrend[0], hrend[1] / 1000000);
 };
 
 const pbcopy = (data: string): void => {

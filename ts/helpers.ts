@@ -149,3 +149,29 @@ export const codonsForAminoAcid = (given: AminoAcid): string[] =>
 	Object.keys(rnaCodonProteinMap).filter(
 		(codon: string) => given === rnaCodonProteinMap[codon],
 	);
+
+export const findSplitSubseq = (na: string, subSeq: string): number[] => {
+	const locations: number[] = [];
+	for (const base of subSeq) {
+		const lastIdx = locations.length ? locations[locations.length - 1] : -1;
+		const i = na.indexOf(base, lastIdx + 1);
+		if (i < 0) {
+			return [];
+		}
+		locations.push(i);
+	}
+	return locations;
+};
+
+export const hammingDistance = (na1: string, na2: string): number => {
+	let distance = 0;
+	if (na1.length !== na2.length) {
+		return -1;
+	}
+	for (let i = 0; i < na1.length; i++) {
+		if (na1[i] !== na2[i]) {
+			distance++;
+		}
+	}
+	return distance;
+};
