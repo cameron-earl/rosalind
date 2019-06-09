@@ -3,6 +3,7 @@
 import { dnaToRna, reverseComplement, rnaToProtein } from '../helpers';
 import cons from './cons';
 import dna from './dna';
+import edit from './edit';
 import fib from './fib';
 import fibd from './fibd';
 import gc from './gc';
@@ -44,4 +45,5 @@ export const solutions: { [key: string]: solutionFn } = {
 	// revp
 	sseq,
 	lcsq,
+	edit,
 };

@@ -175,3 +175,38 @@ export const hammingDistance = (na1: string, na2: string): number => {
 	}
 	return distance;
 };
+
+// https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm
+export const editDistance = (str1: string, str2: string): number => {
+	if (!str1) {
+		return str2.length;
+	}
+	if (!str2) {
+		return str1.length;
+	}
+	const distanceArr: number[][] = new Array(str1.length)
+		.fill(null)
+		.map((el: null): number[] => new Array(str2.length).fill(0));
+
+	for (let i = 0; i < str1.length; i++) {
+		distanceArr[i][0] = i;
+	}
+	for (let i = 0; i < str2.length; i++) {
+		distanceArr[0][i] = i;
+	}
+	for (let i = 1; i < str1.length; i++) {
+		for (let j = 1; j < str2.length; j++) {
+			if (str1[i - 1] === str2[j - 1]) {
+				distanceArr[i][j] = distanceArr[i - 1][j - 1];
+			} else {
+				distanceArr[i][j] =
+					Math.min(
+						distanceArr[i - 1][j - 1],
+						distanceArr[i][j - 1],
+						distanceArr[i - 1][j],
+					) + 1;
+			}
+		}
+	}
+	return distanceArr[str1.length - 1][str2.length - 1];
+};

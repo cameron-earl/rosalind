@@ -3,6 +3,7 @@ import {
 	codonsForAminoAcid,
 	dnaToProtein,
 	dnaToRna,
+	editDistance,
 	findSplitSubseq,
 	hammingDistance,
 	motifLocations,
@@ -106,5 +107,27 @@ describe('hammingDistance', () => {
 
 	it('should return 2 given strings with hamming distance 2', () => {
 		expect(hammingDistance('CAT', 'GAC')).toEqual(2);
+	});
+});
+
+describe('editDistance', () => {
+	it('should return 0 given two empty strings', () => {
+		expect(editDistance('', '')).toEqual(0);
+	});
+
+	it('should return the length of the string if the other is empty', () => {
+		expect(editDistance('cat', '')).toEqual(3);
+	});
+
+	it('should return the length of the string if the first is empty', () => {
+		expect(editDistance('', 'cat')).toEqual(3);
+	});
+
+	it('should pass return 3 given kitten and sitting', () => {
+		expect(editDistance('kitten', 'sitting')).toEqual(3);
+	});
+
+	it('should pass return 4 given Sunday and Saturdays', () => {
+		expect(editDistance('Sunday', 'Saturdays')).toEqual(4);
 	});
 });
